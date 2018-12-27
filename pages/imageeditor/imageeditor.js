@@ -8,6 +8,7 @@ Page({
     imgList:[1,2,3,4,5,6,7,8,9,10],
     currentHatId:1,
 
+
     hatCenterX:wx.getSystemInfoSync().windowWidth/2,
     hatCenterY:150,
     cancelCenterX:wx.getSystemInfoSync().windowWidth/2-50-2,
@@ -18,7 +19,25 @@ Page({
     hatSize:100,
 
     scale:1,
-    rotate:0
+    rotate:0,
+
+
+    initHatCenterX: wx.getSystemInfoSync().windowWidth / 2,
+    initHatCenterY: 150,
+    initCancelCenterX: wx.getSystemInfoSync().windowWidth / 2 - 50 - 2,
+    initCancelCenterY: 100,
+    initHandleCenterX: wx.getSystemInfoSync().windowWidth / 2 + 50 - 2,
+    initHandleCenterY: 200,
+    initHatSize: 100,
+    initScale: 1,
+    initRotate: 0
+
+    ,cancel:"cancel",
+    waiting: "waiting",
+    hat:"hat",
+    imagePre: "../../image/",
+    imageSuf:".png"
+
   },
   onLoad(){
     this.setData({
@@ -46,6 +65,18 @@ Page({
       this.touch_target="hat";
     }else if(e.target.id=="handle"){
       this.touch_target="handle"
+    } else if (e.target.id == "cancel") {
+      this.touch_target = "cancel";
+      this.setData({
+        currentHatId:"",
+        cancel: "",
+        waiting: "",
+        hat: "",
+        imagePre:"",
+        imageSuf:""
+        
+      });
+      
     }else{
       this.touch_target=""
     };
@@ -110,7 +141,25 @@ Page({
   chooseImg(e){
     console.log(e);
     this.setData({
-      currentHatId:e.target.dataset.hatId
+      currentHatId:e.target.dataset.hatId,
+
+
+      hatCenterX: wx.getSystemInfoSync().windowWidth / 2,
+      hatCenterY: 150,
+      cancelCenterX: wx.getSystemInfoSync().windowWidth / 2 - 50 - 2,
+      cancelCenterY: 100,
+      handleCenterX: wx.getSystemInfoSync().windowWidth / 2 + 50 - 2,
+      handleCenterY: 200,
+      hatSize: 100,
+      scale: 1,
+      rotate: 0,
+      
+      cancel: "cancel",
+      waiting: "waiting",
+      hat: "hat",
+      imagePre: "../../image/",
+      imageSuf: ".png"
+
     })
   },
   combinePic(){
